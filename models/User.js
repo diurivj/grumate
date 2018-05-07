@@ -15,10 +15,15 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  role:{
+  role: {
     type: String,
     enum: ['ADMIN', 'USER', 'DRIVER'],
     default: 'USER'
+  },
+  status: {
+    type: String,
+    enum: ['ACTIVE', 'PENDING'],
+    default: 'PENDING'
   },
   profilePic: String,
 },{
