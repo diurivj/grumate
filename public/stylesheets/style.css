@@ -1,8 +1,15 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
+
+.navTop {
+  margin-top: 50px;
+  margin-left: 1100px; }
+
+h1 {
+  margin-left: 550px; }
 
 /*# sourceMappingURL=style.css.map */
