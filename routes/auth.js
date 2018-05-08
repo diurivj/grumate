@@ -4,6 +4,7 @@ const User        = require("../models/User");
 const multer      = require('multer');
 const uploads     = multer({dest: './public/uploads'});
 const nodemailer  = require('nodemailer');
+
 require('dotenv').config();
 
 router.get('/signup', (req, res, next) => {
@@ -51,77 +52,107 @@ router.get('/user/confirmed/:id', (req, res) => {
   .catch(e => next(e));
 });
 
+router.get('/login', isAuthenticated, (req,res) => {
+  res.render('auth/login', {error:req.body.error});
+});
 
+router.post('/login', checkStatus, passport.authenticate('local'), (req,res) => {
+  res.redirect('/profile');
+}); 
 
+router.get('/profile', isNotAuth, (req, res, next) => {
+  req.app.locals.user = req.user;
+  User.findById(req.user._id)
+  .then(user => {
+    if (user.profilePic === 'No Photo') res.redirect(`/profile/incomplete/${user._id}`);
+      res.render('profile');
+  })
+  .catch(e => next(e));
+});
 
+router.get('/profile/incomplete/:id', (req, res, next) => {
+  User.findById(req.params.id)
+  .then(user => {
+    res.render('incomplete', {user});
+  })
+  .catch(e => next(e));
+});
 
+router.post('/profile/incomplete/:id', uploads.single('profilePic'), (req, res, next) => {
+  req.body.profilePic = '/uploads/' + req.file.filename;
+  const address = {
+    coord: [],
+    street: req.body.street,
+    number: req.body.number,
+    city: req.body.city,
+    state: req.body.state,
+    cp: req.body.cp
+  };
+  const car = {
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    año: req.body.año,
+    placas: req.body.placas  
+  };
+  User.findOneAndUpdate({email: req.body.email}, {$set: {address: address, profilePic: req.body.profilePic, car: car}})
+  .then(() => {
+    console.log("Actualizado");
+    res.redirect('/profile');
+  })
+  .catch(e => next(e));
+});
 
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/login');
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     router.get('/profile', isNotAuth, (req,res, next)=>{
-//       User.findById(req.user._id)
-//       .populate('products')
-//       .then(user=>{
-//           res.render('auth/profile', user);
-//       })
-//       .catch(e=>next(e))
-      
-//   })
-  
-//   router.post('/profile', uploads.single('profilePic'), (req,res, next)=>{
-//       req.body.profilePic = '/uploads/' + req.file.filename;
-//       User.findByIdAndUpdate(req.user._id, req.body)
-//       .then(()=>{
-//           req.user.message = "Actualizado";
-//           res.render('auth/profile', req.user);
-//       })
-//       .catch(e=>next(e));
-//   });
-  
-//   router.get('/logout', (req,res)=>{
-//       req.logout();
-//       res.redirect('/login');
-//   })
-
-//   router.get('/login', isAuthenticated,(req,res)=>{
-//     res.render('auth/login', {error:req.body.error});
-// })
-
-// router.post('/login', 
-//     passport.authenticate('local'), 
-//     (req,res)=>{
-//         res.redirect('/profile');
-//     })
-
-function isAuthenticated(req, res, next){
+function isAuthenticated (req, res, next){
   if(req.isAuthenticated()) return res.redirect('/profile')
     return next();
 };
 
-function isNotAuth(req,res,next){
+function isNotAuth (req, res, next) {
   if(req.isAuthenticated()) return next();
     return res.redirect('/login');
 };
 
+function checkStatus (req, res, next) {
+  User.findOne({email: req.body.email})
+  .then(user => {
+    if (user.status === "Active") return next();
+      res.redirect('/')
+  })
+  .catch(e => next(e));
+};
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+

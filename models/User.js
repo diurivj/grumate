@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 const PassportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema({
+  profilePic: {
+    type: String, 
+    default: 'No Photo'
+  },
   name: {
     type: String,
     required: true
@@ -25,7 +29,20 @@ const userSchema = new Schema({
     enum: ['ACTIVE', 'PENDING'],
     default: 'PENDING'
   },
-  profilePic: String,
+  address: {
+    coord:[],
+    street: String,
+    number: Number,
+    city: String,
+    state: String,
+    cp: Number
+  },
+  car: {
+    marca: String,
+    modelo: String,
+    year: String,
+    placas: String
+  }
 },{
   timestamps:{
     createdAt: "created_at",

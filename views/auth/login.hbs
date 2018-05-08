@@ -1,0 +1,44 @@
+<h2>Login!</h2>
+<div id="container">
+  <div id="normal-login">
+    <form action="/login" method="post">
+    <label for="email">Email</label><br/>
+    <input type="email" name="email" placeholder="Email">
+    <br/><br/>
+    <label for="password">Password</label><br/>
+    <input type="password" name="password" placeholder="Password">
+    <br/><br/>
+    <input type="submit" value="Login">
+    </form>
+  </div>
+  <div id="social-login">
+    login with social, not finished yet!<br>
+    facebook<br>
+    google
+  </div>
+  <p>¿No tienes una cuenta? <br/><br/><a href="/signup">Sign up</a></p>
+</div>
+
+
+{{!-- {{ESTOS SON ESTILOS, LOS PUEDES BORRAR JOSE LINK}} --}}
+<style>
+  h2{
+    margin-left: 700px;
+  }
+  #container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  #normal-login{
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  #social-login{
+    width: 40%;
+  }
+</style>

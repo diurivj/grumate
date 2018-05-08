@@ -1,0 +1,50 @@
+<h2>Edita tu perfil</h2>
+
+<form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data">
+
+  <label for="name">Nombre</label><br/>
+  <input type="text" name="name" value="{{user.name}}"/>
+  <br/><br/>
+  <label for="lastName">Apellidos</label><br/>
+  <input type="text" name="lastName" value="{{user.lastName}}"/>
+  <br/><br/>
+  <label for="email">Email</label><br/>
+  <input type="email" name="email" value="{{user.email}}"/>
+  <br/><br/>
+  <label for="profilePic">Subir foto</label><br/>
+  <input type="file" name="profilePic">
+  <br/><br/><br/>
+
+  <label>Dirección</label><br/><br/>
+  <label for="street">Calle</label><br/>
+  <input type="text" name="street" placeholder="Calle" value="{{user.address.street}}">
+  <br/><br/>
+  <label for="number">Número</label><br/>
+  <input type="number" name="number" placeholder="Número" value="{{user.address.number}}">
+  <br/><br/>
+  <label for="city">Ciudad</label><br/>
+  <input type="text" name="city" placeholder="Ciudad" value="{{user.address.city}}">
+  <br/><br/>
+  <label for="state">Estado o provincia</label><br/>
+  <input type="text" name="state" placeholder="Estado o provincia" value="{{user.address.state}}">
+  <br/><br/>
+  <label for="cp">Código Postal</label><br/>
+  <input type="number" name="cp" placeholder="CP" value="{{user.address.cp}}">
+  <br/><br/>
+
+  <label>Automovil</label><br/><br/>
+  <label for="marca">Marca</label><br/>
+  <input type="text" name="marca" placeholder="Marca" value="{{user.car.marca}}">
+  <br/><br/>
+  <label for="modelo">Modelo</label><br/>
+  <input type="text" name="modelo" placeholder="Modelo" value="{{user.car.modelo}}">
+  <br/><br/>
+  <label for="year">Año</label><br/>
+  <input type="number" name="year" placeholder="Año" value="{{user.car.year}}">
+  <br/><br/>
+  <label for="placas">Placas</label><br/>
+  <input type="text" name="placas" placeholder="Placas" value="{{user.car.placas}}">
+  <br/><br/>
+
+  <input type="submit" value="Actualizar perfil"/>
+</form>
