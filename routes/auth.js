@@ -11,6 +11,7 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.get('/signup/user', (req,res) => {
+  const role = req.query.role;
   res.render('auth/signup');
 });
 
