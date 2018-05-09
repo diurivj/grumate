@@ -64,8 +64,11 @@ router.post('/login', checkStatus, passport.authenticate('local'), (req,res) => 
 router.get('/profile', isNotAuth, (req, res, next) => {
   User.findById(req.user._id)
   .then(user => {
-    if (user.profilePic === 'No Photo') return res.redirect(`/profile/incomplete/${user._id}`);
+    if (user.profilePic === 'No Photo') {
+      res.redirect(`/profile/incomplete/${user._id}`);
+    } else {
       res.render('profile');
+    }
   })
   .catch(e => next(e));
 });
