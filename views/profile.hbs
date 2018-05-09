@@ -6,8 +6,8 @@
     <label>Nombre: {{user.name}} {{user.lastName}}</label> <br/><br/>
     <label>Email: {{user.email}}</label> <br/><br/>
     <h1>Domicilio</h1>
-    <label>{{user.street}} {{user.number}}</label> <br/><br/>
-    <label>{{user.city}} {{user.state}} {{user.cp}}</label> <br/><br/>
+    <label>{{user.address.street}} {{user.address.number}}</label> <br/><br/>
+    <label>{{user.address.city}} {{user.address.state}} {{user.address.cp}}</label> <br/><br/>
     <h1>Automóvil</h1>
     <label>{{user.car.marca}} {{user.grua.gruaMarca}}</label> <br/><br/>
     <label>{{user.car.modelo}} {{user.grua.tipo}}</label> <br/><br/>
@@ -16,15 +16,6 @@
     <a href="/logout">Logout</a>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 {{!-- {{ESTO LO PUEDES CAMBIAR O BORRAR JOSELINK}} --}}
 <style>
