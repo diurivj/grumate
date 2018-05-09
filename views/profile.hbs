@@ -1,2 +1,37 @@
-<h1>PERFIL YA COMPLETO</h1>
-<a href="/profile/incomplete/{{user._id}}/">Editar perfil</a>
+<div id="container">
+  <div id="profileContainer">
+    <h1>Profile</h1>
+    <br/><br/>
+    <img src="{{user.profilePic}}"> <br/><br/>
+    <label>Nombre: {{user.name}} {{user.lastName}}</label> <br/><br/>
+    <label>Email: {{user.email}}</label> <br/><br/>
+    <h1>Domicilio</h1>
+    <label>{{user.street}} {{user.number}}</label> <br/><br/>
+    <label>{{user.city}} {{user.state}} {{user.cp}}</label> <br/><br/>
+    <h1>Automóvil</h1>
+    <label>{{user.car.marca}} {{user.grua.gruaMarca}}</label> <br/><br/>
+    <label>{{user.car.modelo}} {{user.grua.tipo}}</label> <br/><br/>
+    <label>{{user.car.year}}</label> <br/><br/>
+    <a href="/profile/incomplete/{{user._id}}/">Editar perfil</a> <br/><br/>
+    <a href="/logout">Logout</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{{!-- {{ESTO LO PUEDES CAMBIAR O BORRAR JOSELINK}} --}}
+<style>
+#container{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+</style>

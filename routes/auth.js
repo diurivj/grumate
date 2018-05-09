@@ -67,7 +67,7 @@ router.get('/profile', isNotAuth, (req, res, next) => {
     if (user.profilePic === 'No Photo') {
       res.redirect(`/profile/incomplete/${user._id}`);
     } else {
-      res.render('profile');
+      res.render('profile', {user});
     }
   })
   .catch(e => next(e));
@@ -94,13 +94,13 @@ router.post('/profile/incomplete/:id', uploads.single('profilePic'), (req, res, 
   const car = {
     marca: req.body.marca,
     modelo: req.body.modelo,
-    año: req.body.año,
+    year: req.body.year,
     placas: req.body.placas  
   };
   User.findOneAndUpdate({email: req.body.email}, {$set: {address: address, profilePic: req.body.profilePic, car: car}})
   .then(() => {
     console.log("Actualizado");
-    res.redirect('/profile');
+    res.redirect('/login');
   })
   .catch(e => next(e));
 });
