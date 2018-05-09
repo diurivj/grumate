@@ -10,12 +10,11 @@ const logger        = require('morgan');
 const path          = require('path');
 const passport      = require('./helpers/passport');
 const session       = require('express-session');
-const flash         = require('connect-flash')
-
+const flash         = require('connect-flash');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/grumate', {useMongoClient: true})
+  .connect(process.env.DATABASE, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -61,9 +60,8 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-
-const auth  = require('./routes/auth');
-const index = require('./routes/index');
+const auth       = require('./routes/auth');
+const index      = require('./routes/index');
 app.use('/', auth);
 app.use('/', index);
 

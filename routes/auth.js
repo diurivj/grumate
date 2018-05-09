@@ -1,10 +1,9 @@
 const router      = require('express').Router();
-const passport    = require("passport");
-const User        = require("../models/User");
+const passport    = require('passport');
+const User        = require('../models/User');
 const multer      = require('multer');
 const uploads     = multer({dest: './public/uploads'});
 const nodemailer  = require('nodemailer');
-
 require('dotenv').config();
 
 router.get('/signup', (req, res, next) => {
@@ -12,7 +11,7 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.get('/signup/user', (req,res) => {
-  res.render('auth/signup',{error:req.body.error});
+  res.render('auth/signup');
 });
 
 router.post('/signup/user', (req,res) => {
@@ -121,7 +120,7 @@ function checkStatus (req, res, next) {
   User.findOne({email: req.body.email})
   .then(user => {
     if (user.status === "Active") return next();
-      res.redirect('/')
+      res.render('auth/z')
   })
   .catch(e => next(e));
 };
