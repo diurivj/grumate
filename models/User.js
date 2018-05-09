@@ -44,9 +44,9 @@ const userSchema = new Schema({
     placas: String
   },
   grua: {
-    marca: String,
+    gruaMarca: String,
     tipo: String,
-    placas: String
+    gruaPlacas: String
   }
 },{
   timestamps:{

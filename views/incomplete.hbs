@@ -32,7 +32,7 @@
   <input type="number" name="cp" placeholder="CP" value="{{user.address.cp}}">
   <br/><br/>
 
-  <label>Automovil</label><br/><br/>
+  <label>Automóvil (SOLO USUARIOS)</label><br/><br/>
   <label for="marca">Marca</label><br/>
   <input type="text" name="marca" placeholder="Marca" value="{{user.car.marca}}">
   <br/><br/>
@@ -44,6 +44,17 @@
   <br/><br/>
   <label for="placas">Placas</label><br/>
   <input type="text" name="placas" placeholder="Placas" value="{{user.car.placas}}">
+  <br/><br/>
+
+  <label>Grúas (SOLO CONDUCTORES)</label><br/><br/>
+  <label for="marca">Marca</label><br/>
+  <input type="text" name="gruaMarca" placeholder="Marca" value="{{user.grua.gruaMarca}}">
+  <br/><br/>
+  <label for="modelo">Tipo</label><br/>
+  <input type="text" name="tipo" placeholder="Tipo" value="{{user.grua.tipo}}">
+  <br/><br/>
+  <label for="placas">Placas</label><br/>
+  <input type="text" name="gruaPlacas" placeholder="Placas" value="{{user.grua.gruaPlacas}}">
   <br/><br/>
 
   <input type="submit" value="Actualizar perfil"/>
