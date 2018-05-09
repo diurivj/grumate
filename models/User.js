@@ -21,8 +21,8 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['ADMIN', 'USER', 'DRIVER'],
-    default: 'USER'
+    enum: ['ADMIN', 'user', 'driver'],
+    default: 'user'
   },
   status: {
     type: String,
@@ -41,6 +41,11 @@ const userSchema = new Schema({
     marca: String,
     modelo: String,
     year: String,
+    placas: String
+  },
+  grua: {
+    marca: String,
+    tipo: String,
     placas: String
   }
 },{

@@ -7,15 +7,16 @@ const nodemailer  = require('nodemailer');
 require('dotenv').config();
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup');
+  if(req.query.role ===  'user') {
+    res.render('auth/signup', {r: req.query.role});
+    return;
+  } else if (req.query.role === 'driver') {
+    res.render('auth/signup', {r: req.query.role});
+  }
+    res.render('signup')
 });
 
-router.get('/signup/user', (req,res) => {
-  const role = req.query.role;
-  res.render('auth/signup');
-});
-
-router.post('/signup/user', (req,res) => {
+router.post('/signup', (req,res) => {
   User.register(req.body, req.body.password, function(err, user) {
     if (err) return res.send(err);
       const authenticate = User.authenticate();
