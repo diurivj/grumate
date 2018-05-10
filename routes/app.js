@@ -11,11 +11,20 @@ function isLoggedIn(req, res, next){
     res.redirect('/login');
 };
 
+function checkRole(req, res, next){
+  if(req.user.role === 'user') return next();
+    res.render('grumateDriver')
+};
+
 router.get('/', (req, res, next) => {
   res.render('app');
 });
 
-router.get('/grumate', isLoggedIn, (req, res, next) => {
+router.get('/social', isLoggedIn, (req, res, next) => {
+  res.send('Aquí tendría que esta la parte social de grumate');
+});
+
+router.get('/grumate', isLoggedIn, checkRole, (req, res, next) => {
   res.render('grumateUser');
 });
 
@@ -27,15 +36,5 @@ router.post('/grumate', (req, res, next) => {
     })
     .catch(e => next(e));
 });
-
-router.get('/user/request', (req, res, next) => {
-  res.send(req.user);
-});
-
-router.get('/social', isLoggedIn, (req, res, next) => {
-  res.send('Aquí tendría que esta la parte social de grumate');
-});
-
-
 
 module.exports = router;
