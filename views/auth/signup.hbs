@@ -1,25 +1,48 @@
-<h2>Registrar nuevo usuario</h2>
-<form action="/signup" method="post">
-  <label for="name">Nombre (Obligatorio)</label>
-  <br/>
-  <input type="text" name="name" placeholder="Nombre(s)"/>
-  <br/><br/>
-  <label for="lastName">Apellidos (Obligatorio)</label>
-  <br/>
-  <input type="text" name="lastName" placeholder="Apellidos"/>
-  <br/><br/>
-  <label for="email">Email (Obligatorio)</label>
-  <br/>
-  <input type="email" name="email" placeholder="Email"/>
-  <br/><br/>
-  <label for="password">Crea contraseña</label>
-  <br/>
-  <input type="password" name="password" placeholder="Contraseña"/>
-  <br/><br/>
-  <label for="password2">Confirmar contraseña</label>
-  <br/>
-  <input type="password" name="password2" placeholder="Confirmar contraseña"/>
-  <br/><br/>
-  <input type="text" name="role" value="{{r}}" hidden />
-  <input type="submit" value="Crear cuenta"/>
+
 </form>
+
+<section class="section-book">
+    <div class="row">
+        <div class="book">
+            <div class="book__form">
+                <form action="/signup" method="post" class="form">
+                    <div class="u-margin-bottom-medium">
+                        <h2 class="heading-secondary">
+                            Nuevo usuario
+                        </h2>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" name="name" class="form__input" placeholder="Nombre" id="name" required>
+                        <label for="name" class="form__label">Nombre</label>
+                    </div>
+
+                    <div class="form__group">
+                        <input type="text" name="lastName" class="form__input" placeholder="Apellido" id="lastName" required>
+                        <label for="lastName" class="form__label">Apellidos</label>
+                    </div>
+
+                    <div class="form__group">
+                        <input type="email" name="email" class="form__input" placeholder="Correo electrónico" id="email" required>
+                        <label for="email" class="form__label">Correo electrónico</label>
+                    </div>
+
+                    <div class="form__group">
+                        <input type="password" name="password" class="form__input" placeholder="Contraseña" id="password" required>
+                        <label for="password" class="form__label">Contraseña</label>
+                    </div>
+  
+                    <div class="form__group">
+                        <input type="password" name="password2" class="form__input" placeholder="Confirmar contraseña" id="password2" required>
+                        <label for="password2" class="form__label">Confirmar contraseña</label>
+                    </div>  
+  
+                        <input type="text" name="role" value="{{r}}" hidden />
+
+                    <div class="form__group">
+                        <button  type="submit" class="btn btn--grey">Crear cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
