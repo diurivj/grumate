@@ -12,6 +12,7 @@ router.get('/signup', (req, res, next) => {
     return;
   } else if (req.query.role === 'driver') {
     res.render('auth/signup', {r: req.query.role});
+    return;
   }
     res.render('signup')
 });

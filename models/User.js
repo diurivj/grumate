@@ -37,6 +37,15 @@ const userSchema = new Schema({
     state: String,
     cp: Number
   },
+  location:{ 
+    type:{
+      type: String,
+      default: "Point"
+    },
+    coordinates: [{
+      type: Number
+    }]
+  },
   car: {
     marca: String,
     modelo: String,
