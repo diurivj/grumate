@@ -18,24 +18,17 @@
 </div>
 
 <div>
-  <form action="/app/grumate" method="post">
-    <input type="submit" value="pedir viaje">
-  </form>
+
+  <button id="request_grumate">PEDIR VIAJE</button>
+
 </div>
-
-
-
-
-
-
-
-
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmdSevL7BsfOVoHJz99JA6wjCwtxtdCus&libraries=places"></script>
 <script>
-  
-  var  origen;
+
+
+  var  origen, pos;
 
   function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
@@ -48,7 +41,7 @@
     if (navigator.geolocation) {
 
       navigator.geolocation.getCurrentPosition(function(position) {
-        const pos = {
+        pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
@@ -165,7 +158,31 @@
         });
       };
 
-
   initMap();
+
+  function updateCoordinates(){
+
+    let d = {
+      coords: pos
+    } 
+
+    fetch('/app/grumate', {
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: 'post',
+      body: JSON.stringify(d),
+      credentials: 'same-origin',
+    })
+    .then(r=>r.json())
+    .then(data=>{
+      console.log(data);
+    })
+
+  }
+
+
+  document.getElementById('request_grumate').addEventListener('click', updateCoordinates);
+
 </script>
 

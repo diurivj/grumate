@@ -8,8 +8,8 @@ require('dotenv').config();
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()) return next();
-  res.redirect('/login');
-}
+    res.redirect('/login');
+};
 
 router.get('/', (req, res, next) => {
   res.render('app');
@@ -17,6 +17,19 @@ router.get('/', (req, res, next) => {
 
 router.get('/grumate', isLoggedIn, (req, res, next) => {
   res.render('grumateUser');
+});
+
+router.post('/grumate', (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id, {$set: {coordinates: req.body.coords}}, {new:true})
+    .then(user => {
+      res.status(200);
+      res.json(user);
+    })
+    .catch(e => next(e));
+});
+
+router.get('/user/request', (req, res, next) => {
+  res.send(req.user);
 });
 
 router.get('/social', isLoggedIn, (req, res, next) => {
