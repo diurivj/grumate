@@ -3,8 +3,14 @@
 <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" style="width:250px">
 
 <div id="mode-selector" class="controls">
-  <input type="radio" name="type" id="changemode-driving" checked="checked">
-  <label for="changemode-driving">Driving</label>
+  <input type="radio" name="type" id="changemode-walking" hidden>
+  <label for="changemode-walking" hidden>Walking</label>
+
+  <input type="radio" name="type" id="changemode-transit" hidden>
+  <label for="changemode-transit" hidden>Transit</label>
+
+  <input type="radio" name="type" id="changemode-driving" checked="checked" hidden>
+  <label for="changemode-driving" hidden>Driving</label>
 </div>
 
 <div id="map" style="width:100%;height:400px;"></div>
