@@ -20,11 +20,10 @@
   
   function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
+      //deshabilita la opción de cambiar entre mapa y satélite 
       mapTypeControl: false,
       zoom: 17
     });
-
-    const infoWindow = new google.maps.InfoWindow({map: map});
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -32,9 +31,14 @@
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-      
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('You are here.');
+
+        //marker of current position
+        const marker = new google.maps.Marker({
+          position: pos,
+          map,
+          title: 'Current position'
+        });
+
         map.setCenter(pos);
       }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
