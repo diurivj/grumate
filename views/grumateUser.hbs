@@ -1,6 +1,9 @@
-<input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" style="width:250px">
 
-<input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" style="width:250px">
+<h2>PIDE GRUMATE</h2>
+<div id="map" style="width:100%;height:400px;"></div>
+{{!-- ESTO ES LO QUE VA ABAJO DEL MAPA --}}
+<input id="origin-input" class="controls" type="text" placeholder="Ingresa tu destino" style="width:250px">
+<input id="destination-input" class="controls" type="text" placeholder="Confirma tu destino" style="width:250px">
 
 <div id="mode-selector" class="controls">
   <input type="radio" name="type" id="changemode-walking" hidden>
@@ -11,13 +14,22 @@
 
   <input type="radio" name="type" id="changemode-driving" checked="checked" hidden>
   <label for="changemode-driving" hidden>Driving</label>
+
 </div>
 
-<div id="map" style="width:100%;height:400px;"></div>
+<div>
+
+  <button id="request_grumate"><a href="/app">PEDIR VIAJE</a></button>
+
+</div>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmdSevL7BsfOVoHJz99JA6wjCwtxtdCus&libraries=places"></script>
 <script>
-  
+
+
+  var  origen, pos;
+
   function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
       //deshabilita la opción de cambiar entre mapa y satélite 
@@ -25,9 +37,11 @@
       zoom: 17
     });
 
+
     if (navigator.geolocation) {
+
       navigator.geolocation.getCurrentPosition(function(position) {
-        const pos = {
+        pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
@@ -38,14 +52,22 @@
           map,
           title: 'Current position'
         });
-
+          var geocoder = new google.maps.Geocoder;
+          geocoder.geocode({'location': pos}, function(results, status) {
+           origen = results[0].place_id;
+           console.log('results', results);
+           //llamar a esa funcion
+         });
         map.setCenter(pos);
+
       }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
           handleLocationError(false, infoWindow, map.getCenter());
     }
+
+    //autocomplete to places in the inputs
     new AutocompleteDirectionsHandler(map);
   };
 
@@ -56,8 +78,9 @@
       'Error: Your browser doesn\'t support geolocation.');
   };
 
-
+  //aquí empieza lo de rutas 
   function AutocompleteDirectionsHandler(map) {
+
     this.map = map;
     this.originPlaceId = null;
     this.destinationPlaceId = null;
@@ -123,7 +146,7 @@
         var me = this;
 
         this.directionsService.route({
-          origin: {'placeId': this.originPlaceId},
+          origin: {'placeId': origen},
           destination: {'placeId': this.destinationPlaceId},
           travelMode: this.travelMode
         }, function(response, status) {
@@ -135,7 +158,31 @@
         });
       };
 
-
   initMap();
+
+  function updateCoordinates(){
+
+    let d = {
+      coords: pos
+    } 
+
+    fetch('/app/grumate', {
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: 'post',
+      body: JSON.stringify(d),
+      credentials: 'same-origin',
+    })
+    .then(r=>r.json())
+    .then(data=>{
+      console.log(data);
+    })
+
+  }
+
+
+  document.getElementById('request_grumate').addEventListener('click', updateCoordinates);
+
 </script>
 
