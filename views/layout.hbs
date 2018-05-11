@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+<<<<<<< HEAD
     <title>Grumate</title>
+=======
+    <title>{{title}}</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+>>>>>>> 7849bba45184762124e08a90d2bf0ac310255465
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navTop">
-      <a href="/">Home</a>
-      <a href="/app">App</a>
-      <a href="/signup">Sign In</a>
-      <a href="/login">Log in</a>
-    </nav>
-    
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+      <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon">&nbsp;</span>
+      </label>
+
+      <div class="navigation__background">&nbsp;</div>
+
+      <nav class="navigation__nav">
+          <ul class="navigation__list">
+              <li class="navigation__item"><a href="/" class="navigation__link"><span></span>Inicio</a></li>
+              <li class="navigation__item"><a href="/app" class="navigation__link"><span></span>App</a></li>
+              <li class="navigation__item"><a href="/signup" class="navigation__link"><span></span>Registro</a></li>
+              <li class="navigation__item"><a href="/login" class="navigation__link"><span></span>Ingreso</a></li>
+              <li class="navigation__item"><a href="/logout" class="navigation__link"><span></span>Cerrar Sesión</a></li>
+              </ul>
+      </nav>
+    </div>
+
+
+
     {{{body}}}
-  
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
     <script src='/javascripts/script.js'></script>
   </body>
 </html>
