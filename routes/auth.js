@@ -32,6 +32,7 @@ router.post('/signup', (req,res) => {
         pass: process.env.EMAIL_PASS
       }
     });
+    console.log(user.email);
     tp.sendMail({
       from: '"Grumate" <grumate@support.com>',
       to: user.email,
