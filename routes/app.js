@@ -4,7 +4,17 @@ const User        = require('../models/User');
 const multer      = require('multer');
 const uploads     = multer({dest: './public/uploads'});
 const nodemailer  = require('nodemailer');
+const hbs = require('hbs');
+
+
+hbs.registerHelper('json', (content)=>{
+  return JSON.stringify(content);
+})
+
+
 require('dotenv').config();
+
+
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()) return next();
@@ -13,7 +23,7 @@ function isLoggedIn(req, res, next){
 
 function checkRole(req, res, next){
   if(req.user.role === 'user') return next();
-    res.render('grumateDriver')
+    res.redirect('grumate/driver')
 };
 
 router.get('/', (req, res, next) => {
@@ -26,6 +36,17 @@ router.get('/social', isLoggedIn, (req, res, next) => {
 
 router.get('/grumate', isLoggedIn, checkRole, (req, res, next) => {
   res.render('grumateUser');
+});
+
+router.get('/grumate/driver', (req, res, next) => {
+  User.findOne({role: 'user'})
+  .then(user => {
+    console.log(typeof user);
+    //JSON.parse(user);
+    res.render('grumateDriver', {user});
+  })
+  .catch(e => next(e));
+
 });
 
 router.post('/grumate', (req, res, next) => {
