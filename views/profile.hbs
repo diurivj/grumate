@@ -1,28 +1,108 @@
-<div id="container">
-  <div id="profileContainer">
-    <h1>Profile</h1>
-    <br/><br/>
-    <img src="{{user.profilePic}}"> <br/><br/>
-    <label>Nombre: {{user.name}} {{user.lastName}}</label> <br/><br/>
-    <label>Email: {{user.email}}</label> <br/><br/>
-    <h1>Domicilio</h1>
-    <label>{{user.address.street}} {{user.address.number}}</label> <br/><br/>
-    <label>{{user.address.city}}, {{user.address.state}} {{user.address.cp}}</label> <br/><br/>
-    <h1>Automóvil</h1>
-    <label>{{user.car.marca}} {{user.grua.gruaMarca}}</label> <br/><br/>
-    <label>{{user.car.modelo}} {{user.grua.tipo}}</label> <br/><br/>
-    <label>{{user.car.year}}</label> <br/><br/>
-    <a href="/profile/incomplete/{{user._id}}/">Editar perfil</a> <br/><br/>
-    <a href="/logout">Logout</a>
-  </div>
-</div>
+            <section class="section-tours" id="section-tours">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Perfil Grumy :)
+                    </h2>
+                </div>
 
-{{!-- {{ESTO LO PUEDES CAMBIAR O BORRAR JOSELINK}} --}}
-<style>
-#container{
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-}
-</style>
+                <div class="row">
+                    <div class="col-1-of-3">
+                       <div class="card">
+                           <div class="card__side card__side--front">
+                                <div style='background-image:url("{{user.profilePic}}");' class="card__picture card__picture--1">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--1">{{user.name}} {{user.lastName}}</span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>Email: {{user.email}}</li>
+                                        <li>Domicilio</li>
+                                        <li>{{user.address.street}} {{user.address.number}}</li>
+                                        <li>{{user.address.city}}, {{user.address.state}}</li>
+                                        <li>CP: {{user.address.cp}}</li>
+                                    </ul>
+                                </div>
+                           </div>
+                           <div style='background-image:url("{{user.profilePic}}"); background-size: cover; background-position: center;  background-repeat: no-repeat;' class="card__side card__side--back card__side--back-1">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">Edita tu</p>
+                                        <p class="card__price-value">Perfil</p>
+                                    </div>
+                                    <a href="/profile/incomplete/{{user._id}}/" class="btn btn--white">Editar</a>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+
+
+                    <div class="col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--2">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--2">Unidad Móvil</span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>{{user.car.marca}}</li>
+                                        <li>{{user.car.modelo}}</li>
+                                        <li>{{user.car.year}}</li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="card__side card__side--back card__side--back-2">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only"></p>
+                                        <p class="card__price-value"></p>
+                                    </div>
+                                    <a href="/profile/incomplete/{{user._id}}/" class="btn btn--white">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--3">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading">
+                                    <span class="card__heading-span card__heading-span--3">Social</span>
+                                </h4>
+                                <div class="card__details">
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="card__side card__side--back card__side--back-3">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only"></p>
+                                        <p class="card__price-value"></p>
+                                    </div>
+                                    <a href="/profile/incomplete/{{user._id}}/" class="btn btn--white">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
