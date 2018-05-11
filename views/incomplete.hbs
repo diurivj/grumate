@@ -1,37 +1,51 @@
-<h2>Edita tu perfil</h2>
+<div class="u-margin-bottom-medium">
+    <h2 class="heading-secondary">
+        Edita tu perfil
+    </h2>
+</div>
+<section class="section-features">
+    <div class="row">
+      <form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data">
+        <div class="col-1-of-2">
+          <div class="form__group">
+            <label for="name">Nombre</label><br/>
+            <input type="text" name="name" value="{{user.name}}"/>
+            <br/><br/>
+            <label for="lastName">Apellidos</label><br/>
+            <input type="text" name="lastName" value="{{user.lastName}}"/>
+            <br/><br/>
+            <label for="email">Email</label><br/>
+            <input type="email" name="email" value="{{user.email}}"/>
+            <br/><br/>
+            <label for="profilePic">Subir foto</label><br/>
+            <input type="file" name="profilePic">
+          </div>
+        </div>
 
-<form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data">
+        <div class="col-1-of-2">
+          <div class="form__group">
+            <label>Dirección</label><br/><br/>
+            <label for="street">Calle</label><br/>
+            <input type="text" name="street" placeholder="Calle" value="{{user.address.street}}">
+            <br/><br/>
+            <label for="number">Número</label><br/>
+            <input type="number" name="number" placeholder="Número" value="{{user.address.number}}">
+            <br/><br/>
+            <label for="city">Ciudad</label><br/>
+            <input type="text" name="city" placeholder="Ciudad" value="{{user.address.city}}">
+            <br/><br/>
+            <label for="state">Estado o provincia</label><br/>
+            <input type="text" name="state" placeholder="Estado o provincia" value="{{user.address.state}}">
+            <br/><br/>
+            <label for="cp">Código Postal</label><br/>
+            <input type="number" name="cp" placeholder="CP" value="{{user.address.cp}}">
+            <br/><br/>
+          </div>
+        </div>
 
-  <label for="name">Nombre</label><br/>
-  <input type="text" name="name" value="{{user.name}}"/>
-  <br/><br/>
-  <label for="lastName">Apellidos</label><br/>
-  <input type="text" name="lastName" value="{{user.lastName}}"/>
-  <br/><br/>
-  <label for="email">Email</label><br/>
-  <input type="email" name="email" value="{{user.email}}"/>
-  <br/><br/>
-  <label for="profilePic">Subir foto</label><br/>
-  <input type="file" name="profilePic">
-  <br/><br/><br/>
-
-  <label>Dirección</label><br/><br/>
-  <label for="street">Calle</label><br/>
-  <input type="text" name="street" placeholder="Calle" value="{{user.address.street}}">
-  <br/><br/>
-  <label for="number">Número</label><br/>
-  <input type="number" name="number" placeholder="Número" value="{{user.address.number}}">
-  <br/><br/>
-  <label for="city">Ciudad</label><br/>
-  <input type="text" name="city" placeholder="Ciudad" value="{{user.address.city}}">
-  <br/><br/>
-  <label for="state">Estado o provincia</label><br/>
-  <input type="text" name="state" placeholder="Estado o provincia" value="{{user.address.state}}">
-  <br/><br/>
-  <label for="cp">Código Postal</label><br/>
-  <input type="number" name="cp" placeholder="CP" value="{{user.address.cp}}">
-  <br/><br/>
-
+        <input type="submit" value="Actualizar perfil"/>
+      </form>
+    </div>
   <label>Automóvil (SOLO USUARIOS)</label><br/><br/>
   <label for="marca">Marca</label><br/>
   <input type="text" name="marca" placeholder="Marca" value="{{user.car.marca}}">
@@ -57,5 +71,5 @@
   <input type="text" name="gruaPlacas" placeholder="Placas" value="{{user.grua.gruaPlacas}}">
   <br/><br/>
 
-  <input type="submit" value="Actualizar perfil"/>
-</form>
+
+</section>

@@ -7,13 +7,27 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navTop">
-      <a href="/">Home</a>
-      <a href="/app">App</a>
-      <a href="/signup">Sign In</a>
-      <a href="/login">Log in</a>
-    </nav>
-    
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+      <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon">&nbsp;</span>
+      </label>
+
+      <div class="navigation__background">&nbsp;</div>
+
+      <nav class="navigation__nav">
+          <ul class="navigation__list">
+              <li class="navigation__item"><a href="/" class="navigation__link"><span>01</span>Inicio</a></li>
+              <li class="navigation__item"><a href="/app" class="navigation__link"><span>02</span>App</a></li>
+              <li class="navigation__item"><a href="/signup" class="navigation__link"><span>03</span>Registro</a></li>
+              <li class="navigation__item"><a href="/Login" class="navigation__link"><span>04</span>Ingreso</a></li>
+              </ul>
+      </nav>
+    </div>
+
+
+
     {{{body}}}
   
     <script src='/javascripts/script.js'></script>

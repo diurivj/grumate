@@ -1,44 +1,36 @@
-<h2>Login!</h2>
-<div id="container">
-  <div id="normal-login">
-    <form action="/login" method="post">
-    <label for="email">Email</label><br/>
-    <input type="email" name="email" placeholder="Email">
-    <br/><br/>
-    <label for="password">Password</label><br/>
-    <input type="password" name="password" placeholder="Password">
-    <br/><br/>
-    <input type="submit" value="Login">
-    </form>
+
+<section class="section-book-origin">
+  <div class="row">
+      <div class="book-origin">
+          <div class="book__form-origin">
+              <form action="/login" method="post" class="form">
+                  <div class="u-margin-bottom-medium">
+                      <h2 class="heading-secondary">
+                          Bienvenido Grumy!!!
+                      </h2>
+                  </div>
+
+                  <div class="form__group">
+                      <input type="email" class="form__input" placeholder="Email address" id="email" name="email" required>
+                      <label for="email" class="form__label">Email address</label>
+                  </div>
+
+                  <div class="form__group">
+                      <input type="password" class="form__input" placeholder="Contraseña" id="name" name="password" required>
+                      <label for="password" class="form__label">Contraseña</label>
+                  </div>
+
+
+                  <div class="form__group">
+                      <button type="submit" class="btn btn--green">Enganchate &rarr;</button>
+                  </div>
+                  <br>
+          <div class="u-margin-bottom-medium">
+            <h3 class="heading-tertiary u-margin-bottom-small">¿No tienes cuenta? Registrate!</h3>
+            <a href="/signup" class="btn btn--green">Crear cuenta</a>
+          </div>
+              </form>
+          </div>
+      </div>
   </div>
-  <div id="social-login">
-    NO SE QUE ESTA PASANDO
-  </div>
-  <p>¿No tienes una cuenta? <br/><br/><a href="/signup">Sign up</a></p>
-</div>
-
-
-{{!-- {{ESTOS SON ESTILOS, LOS PUEDES BORRAR JOSE LINK}} --}}
-<style>
-h2{
-  margin-left: 700px;
-}
-#container{
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-#normal-login{
-  width: 40%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-#social-login{
-  width: 40%;
-}
-</style>
-
-                            
+</section>            
