@@ -12,7 +12,6 @@ const passport      = require('./helpers/passport');
 const session       = require('express-session');
 const flash         = require('connect-flash');
 
-
 mongoose.Promise = Promise;
 mongoose
   .connect(process.env.DATABASE, {useMongoClient: true})
@@ -68,5 +67,6 @@ app.use('/app', appgru);
 app.use('/', auth);
 app.use('/', index);
 
+//SOCKET.IO
 
 module.exports = app;
