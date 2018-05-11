@@ -37,7 +37,7 @@ router.post('/signup', (req,res) => {
       to: user.email,
       subject: 'Confirm your account ' + user.name + ' ' + user.lastName,
       text: 'Confirm email',
-      html: `<a href="https://grumate.herokuapp.com/user/confirmed/${user.id}">Confirm your email here</a>`
+      html: `<a href="https://grumate.herokuapp.com/user/confirmed/${user._id}">Confirm your email here</a>`
     });
   });
 });
