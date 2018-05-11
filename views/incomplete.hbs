@@ -1,75 +1,141 @@
-<div class="u-margin-bottom-medium">
-    <h2 class="heading-secondary">
-        Edita tu perfil
-    </h2>
-</div>
-<section class="section-features">
-    <div class="row">
-      <form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data">
-        <div class="col-1-of-2">
-          <div class="form__group">
-            <label for="name">Nombre</label><br/>
-            <input type="text" name="name" value="{{user.name}}"/>
-            <br/><br/>
-            <label for="lastName">Apellidos</label><br/>
-            <input type="text" name="lastName" value="{{user.lastName}}"/>
-            <br/><br/>
-            <label for="email">Email</label><br/>
-            <input type="email" name="email" value="{{user.email}}"/>
-            <br/><br/>
-            <label for="profilePic">Subir foto</label><br/>
-            <input type="file" name="profilePic">
-          </div>
-        </div>
+<div id="exTab1" class="container">	
+  <ul  class="nav nav-pills">
+    <li class="active">
+    <a  href="#1a" data-toggle="tab">Datos personales</a>
+    </li>
+    <li><a href="#2a" data-toggle="tab">Domicilio</a>
+    </li>
+    <li><a href="#3a" data-toggle="tab">Unidad</a>
+    </li>
+  </ul>
 
-        <div class="col-1-of-2">
-          <div class="form__group">
-            <label>Dirección</label><br/><br/>
-            <label for="street">Calle</label><br/>
-            <input type="text" name="street" placeholder="Calle" value="{{user.address.street}}">
-            <br/><br/>
-            <label for="number">Número</label><br/>
-            <input type="number" name="number" placeholder="Número" value="{{user.address.number}}">
-            <br/><br/>
-            <label for="city">Ciudad</label><br/>
-            <input type="text" name="city" placeholder="Ciudad" value="{{user.address.city}}">
-            <br/><br/>
-            <label for="state">Estado o provincia</label><br/>
-            <input type="text" name="state" placeholder="Estado o provincia" value="{{user.address.state}}">
-            <br/><br/>
-            <label for="cp">Código Postal</label><br/>
-            <input type="number" name="cp" placeholder="CP" value="{{user.address.cp}}">
-            <br/><br/>
-          </div>
-        </div>
+  <div class="tab-content clearfix">
+    <div class="tab-pane active" id="1a">
+      <section class="section-book">
+          <div class="row">
+              <div class="book">
+                  <div class="book__form">
+                      <form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data" class="form">
+                          <div class="form__group">
+                              <input type="text" name="name" class="form__input" value="{{user.name}}" placeholder="Nombre" id="name" required>
+                              <label for="name" class="form__label">Nombre</label>
+                          </div>
+                          <div class="form__group">
+                              <input type="text" name="lastName" value="{{user.lastName}}" class="form__input" placeholder="Apellido" id="lastName" required>
+                              <label for="lastName" class="form__label">Apellidos</label>
+                          </div>
 
-        <input type="submit" value="Actualizar perfil"/>
-      </form>
+                          <div class="form__group">
+                              <input type="email" name="email" class="form__input" value="{{user.email}}" placeholder="Correo electrónico" id="email" required>
+                              <label for="email" class="form__label">Correo electrónico</label>
+                          </div>
+
+                          <div class="form__group">
+                              <input type="file" name="profilePic" class="form__input btn btn--grey" placeholder="Contraseña" id="password" required>
+                              <label for="profilePic" class="form__label">Subir Foto</label>
+                          </div>
+              
+                              <input type="text" name="role" value="{{r}}" hidden />
+
+                          <div class="form__group">
+                              <button  type="submit" class="btn btn--grey">Actualiza</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </section>
+
     </div>
-  <label>Automóvil (SOLO USUARIOS)</label><br/><br/>
-  <label for="marca">Marca</label><br/>
-  <input type="text" name="marca" placeholder="Marca" value="{{user.car.marca}}">
-  <br/><br/>
-  <label for="modelo">Modelo</label><br/>
-  <input type="text" name="modelo" placeholder="Modelo" value="{{user.car.modelo}}">
-  <br/><br/>
-  <label for="year">Año</label><br/>
-  <input type="number" name="year" placeholder="Año" value="{{user.car.year}}">
-  <br/><br/>
-  <label for="placas">Placas</label><br/>
-  <input type="text" name="placas" placeholder="Placas" value="{{user.car.placas}}">
-  <br/><br/>
+    <div class="tab-pane" id="2a">
+      <section class="section-book">
+        <div class="row">
+          <div class="book">
+            <div class="book__form">
+              <form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data" class="form">
+                <div class="form__group">
+                    <input type="text" name="street" class="form__input" value="{{user.address.street}}" placeholder="Calle" id="street" required>
+                    <label for="street" class="form__label">Calle</label>
+                </div>
 
-  <label>Grúas (SOLO CONDUCTORES)</label><br/><br/>
-  <label for="marca">Marca</label><br/>
-  <input type="text" name="gruaMarca" placeholder="Marca" value="{{user.grua.gruaMarca}}">
-  <br/><br/>
-  <label for="modelo">Tipo</label><br/>
-  <input type="text" name="tipo" placeholder="Tipo" value="{{user.grua.tipo}}">
-  <br/><br/>
-  <label for="placas">Placas</label><br/>
-  <input type="text" name="gruaPlacas" placeholder="Placas" value="{{user.grua.gruaPlacas}}">
-  <br/><br/>
+                <div class="form__group">
+                    <input type="number" name="number" class="form__input" value="{{user.address.number}}" placeholder="Número" id="number" required>
+                    <label for="number" class="form__label">Número</label>
+                </div>
 
+                <div class="form__group">
+                    <input type="text" name="city" class="form__input" value="{{user.address.city}}" placeholder="Ciudad" id="city" required>
+                    <label for="city" class="form__label">Ciudad</label>
+                </div>
 
-</section>
+                <div class="form__group">
+                    <input type="text" name="state" class="form__input" placeholder="Estado" id="state" required>
+                    <label for="state" class="form__label">Estado</label>
+                </div>
+
+                <div class="form__group">
+                    <input type="number" name="cp" class="form__input" placeholder="Codigo Postal" id="cp" required>
+                    <label for="cp" class="form__label">Codigo Postal</label>
+                </div>  
+
+                    <input type="text" name="role" value="{{r}}" hidden />
+
+                <div class="form__group">
+                    <button  type="submit" class="btn btn--grey">Actuliza</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="tab-pane" id="3a">
+      <section class="section-book">
+        <div class="row">
+          <div class="book">
+            <div class="book__form">
+              <form action="/profile/incomplete/{{user._id}}" method="post" enctype="multipart/form-data" class="form">
+                <div class="form__group">
+                    <input type="text" name="marca" class="form__input" value="{{user.car.marca}}" placeholder="Marca" id="marca" required>
+                    <label for="marca" class="form__label">Marca</label>
+                </div>
+
+                <div class="form__group">
+                    <input type="text" name="modelo" class="form__input" value="{{user.car.modelo}}" placeholder="Modelo" id="modelo" required>
+                    <label for="modelo" class="form__label">Modelo</label>
+                </div>
+
+                <div class="form__group">
+                    <input type="number" name="year" class="form__input" value="{{user.car.year}}" placeholder="Year" id="year" required>
+                    <label for="year" class="form__label">Year</label>
+                </div>
+
+                <div class="form__group">
+                    <input type="text" name="placas" class="form__input" value="{{user.car.placas}}" placeholder="Placas" id="placas" required>
+                    <label for="placas" class="form__label">Placas</label>
+                </div>
+
+                    <input type="text" name="role" value="{{r}}" hidden />
+
+                <div class="form__group">
+                    <button  type="submit" class="btn btn--grey">Actualiza</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+	</div>
+</div>
+
+            <!--<label>Grúas (SOLO CONDUCTORES)</label><br/><br/>
+            <label for="marca">Marca</label><br/>
+            <input type="text" name="gruaMarca" placeholder="Marca" value="{{user.grua.gruaMarca}}">
+            <br/><br/>
+            <label for="modelo">Tipo</label><br/>
+            <input type="text" name="tipo" placeholder="Tipo" value="{{user.grua.tipo}}">
+            <br/><br/>
+            <label for="placas">Placas</label><br/>
+            <input type="text" name="gruaPlacas" placeholder="Placas" value="{{user.grua.gruaPlacas}}">
+            <br/><br/>>-->
